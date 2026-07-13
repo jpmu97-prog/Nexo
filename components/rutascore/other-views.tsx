@@ -84,7 +84,7 @@ export function HistoryView() {
   )
 }
 
-export function ProfileView() {
+export function ProfileView({ onSignOut }: { onSignOut?: () => void }) {
   return (
     <div className="flex flex-col gap-3 px-4 pb-4">
       <header className="px-1 pt-3">
@@ -156,6 +156,18 @@ export function ProfileView() {
           ),
         )}
       </section>
+
+      {onSignOut ? (
+        <button
+          onClick={onSignOut}
+          className={cn(
+            CARD,
+            "px-4 py-4 text-center text-[15px] font-semibold text-rose-600 transition active:scale-[0.98] dark:text-rose-400",
+          )}
+        >
+          Cerrar sesión
+        </button>
+      ) : null}
 
       <p className="px-2 text-center text-xs font-medium text-black/40 dark:text-white/40">
         No es cuánto hiciste. Es cuánto te quedó.
